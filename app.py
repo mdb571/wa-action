@@ -25,7 +25,7 @@ if num is None:
 if event == "pull_request":
     github_url = f'https://github.com/{repo}/pulls/{num}'
     if action == "opened":
-        response = f'A new Pull requests (#{num}) is opened in {repo} by {name} with title: \"{title}\" URL: {github_url}'
+        response = f'A new Pull request *{title}* (*#{num}*) has been opened in *{repo}* by *{name}*  \n\n {github_url}'
         data={
          'To':To,
          'From':From,
@@ -33,7 +33,7 @@ if event == "pull_request":
         }
         requests.post(twilio_url,data=data,auth=(apikey,authtoken))
     elif action == 'closed':
-        response = f'The Pull requests (#{num}) on {repo} is closed by {name}, URL: {github_url}'
+        response = f'The Pull request *{title}* (#{num}) on *{repo}* has been closed by *{name}*, \n\n {github_url}'
         data={
          'To':To,
          'From':From,
@@ -43,7 +43,7 @@ if event == "pull_request":
 elif event == 'issues':
     github_url = f'https://github.com/{repo}/issues/{num}'
     if action == 'opened':
-        response = f'A new Issue (#{num}) is opened in {repo} by {name} with title: \"{title}\" URL: {github_url}'
+        response = f'A new Issue *{title}* (*#{num}*) has been opened in *{repo}* by *{name}* \n\n {github_url}'
         data={
          'To':To,
          'From':From,
@@ -51,7 +51,7 @@ elif event == 'issues':
         }
         requests.post(twilio_url,data=data,auth=(apikey,authtoken))
     elif action == 'closed':
-        response = f'The Issue (#{num}) on {repo} is closed by {name}, URL: {github_url}'
+        response = f'The Issue (*#{num}*) on *{repo}* is closed by *{name}*, \n\n {github_url}'
         data={
          'To':To,
          'From':From,
@@ -61,7 +61,7 @@ elif event == 'issues':
 
 else:
     github_url = f'https://github.com/{repo}'
-    response = f'A new {event} has occured in the {repo} by {name},URL: {github_url}'
+    response = f'A new *{event}* has been made in *{repo}* by *{name}*, \n\n {github_url}'
     data={
          'To':To,
          'From':From,
