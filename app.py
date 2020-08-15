@@ -51,7 +51,7 @@ elif event == 'issues':
         }
         requests.post(twilio_url,data=data,auth=(apikey,authtoken))
     elif action == 'closed':
-        response = f'The Issue (*#{num}*) on *{repo}* is closed by *{name}*, \n\n {github_url}'
+        response = f'The Issue (*#{num}*) on *{repo}* was closed by *{name}*, \n\n {github_url}'
         data={
          'To':To,
          'From':From,
