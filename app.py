@@ -1,5 +1,5 @@
 import os
-import request
+import requestss
 
 title = os.getenv("INPUT_IUTITLE")
 num = os.getenv("INPUT_IUNUM")
@@ -24,21 +24,21 @@ if num is None:
 if event == "pull_request":
     github_url = f'https://github.com/{repo}/pulls/{num}'
     if action == "opened":
-        response = f'A new Pull Request (#{num}) is opened in {repo} by {name} with title: \"{title}\" URL: {github_url}'
+        response = f'A new Pull requests (#{num}) is opened in {repo} by {name} with title: \"{title}\" URL: {github_url}'
         data={
          'To':To,
          'From':From,
          'Body':response
         }
-        request.post(twilio_url,data=data,auth=(apikey,authtoken))
+        requests.post(twilio_url,data=data,auth=(apikey,authtoken))
     elif action == 'closed':
-        response = f'The Pull Request (#{num}) on {repo} is closed by {name}, URL: {github_url}'
+        response = f'The Pull requests (#{num}) on {repo} is closed by {name}, URL: {github_url}'
         data={
          'To':To,
          'From':From,
          'Body':response
         }
-        request.post(twilio_url,data=data,auth=(apikey,authtoken))
+        requests.post(twilio_url,data=data,auth=(apikey,authtoken))
 elif event == 'issues':
     github_url = f'https://github.com/{repo}/issues/{num}'
     if action == 'opened':
@@ -48,7 +48,7 @@ elif event == 'issues':
          'From':From,
          'Body':response
         }
-        request.post(twilio_url,data=data,auth=(apikey,authtoken))
+        requests.post(twilio_url,data=data,auth=(apikey,authtoken))
     elif action == 'closed':
         response = f'The Issue (#{num}) on {repo} is closed by {name}, URL: {github_url}'
         data={
@@ -56,7 +56,7 @@ elif event == 'issues':
          'From':From,
          'Body':response
         }
-        request.post(twilio_url,data=data,auth=(apikey,authtoken))
+        requests.post(twilio_url,data=data,auth=(apikey,authtoken))
 
 else:
     github_url = f'https://github.com/{repo}'
@@ -66,4 +66,4 @@ else:
          'From':From,
          'Body':response
         }
-    request.post(twilio_url,data=data,auth=(apikey,authtoken))
+    requests.post(twilio_url,data=data,auth=(apikey,authtoken))
