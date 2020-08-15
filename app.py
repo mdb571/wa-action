@@ -1,5 +1,5 @@
 import os
-import requestss
+import requests
 
 title = os.getenv("INPUT_IUTITLE")
 num = os.getenv("INPUT_IUNUM")
