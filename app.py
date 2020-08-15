@@ -10,7 +10,7 @@ action = os.getenv('INPUT_EVENT_ACTION')
 From = os.getenv('INPUT_FROM')
 To = os.getenv('INPUT_TO')
 apikey=os.getenv('INPUT_TWILIO_API')
-authtoke=os.getenv('INPUT_TWILIO_AUTH')
+authtoken=os.getenv('INPUT_TWILIO_AUTH')
 
 twilio_url='https://api.twilio.com/2010-04-01/Accounts/'+apikey+'/Messages.json'
 
