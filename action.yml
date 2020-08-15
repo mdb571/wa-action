@@ -1,0 +1,39 @@
+name: "Twilio-Whatsapp Action"
+description: "Recieve repo notifications on your whatsapp when a push occurs in the master branch"
+author: "mdb571"
+branding:
+  icon: message-square
+  color: black
+
+inputs:
+  from:
+    description: "The twilio whatsapp number from which the sms should be sent"
+    required: true
+  to:
+    description: "The number which is configured with twilio"
+    required: true
+  twilio_api:
+    description: "Twilio API key from twilio console"
+    required: true
+  twilio_auth:
+    description: "Twilio Authentication token from console"
+    required: true
+  iutitle: 
+    description: 'Issue Title'
+    default: ${{ github.event.issue.title }}
+  iunum:
+    description: 'Issue Number'
+    default: ${{ github.event.issue.number }}
+  event_action:
+    description: "Current state of the issue/pull request"
+    default: ${{ github.event.action }}
+  prnum:
+    description: 'PR Number'
+    default: ${{ github.event.pull_request.number }}
+  prtitle:
+    description: 'PR Title'
+    default: ${{ github.event.pull_request.title }}
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
