@@ -33,7 +33,7 @@ if event == "pull_request":
         request.post(twilio_url,data=data,auth=(apikey,authtoken))
     elif action == 'closed':
         response = f'The Pull Request (#{num}) on {repo} is closed by {name}, URL: {github_url}'
-       data={
+        data={
          'To':To,
          'From':From,
          'Body':response
@@ -43,7 +43,7 @@ elif event == 'issues':
     github_url = f'https://github.com/{repo}/issues/{num}'
     if action == 'opened':
         response = f'A new Issue (#{num}) is opened in {repo} by {name} with title: \"{title}\" URL: {github_url}'
-       data={
+        data={
          'To':To,
          'From':From,
          'Body':response
@@ -51,7 +51,7 @@ elif event == 'issues':
         request.post(twilio_url,data=data,auth=(apikey,authtoken))
     elif action == 'closed':
         response = f'The Issue (#{num}) on {repo} is closed by {name}, URL: {github_url}'
-       data={
+        data={
          'To':To,
          'From':From,
          'Body':response
@@ -61,7 +61,7 @@ elif event == 'issues':
 else:
     github_url = f'https://github.com/{repo}'
     response = f'A new {event} has occured in the {repo} by {name},URL: {github_url}'
-   data={
+    data={
          'To':To,
          'From':From,
          'Body':response
