@@ -12,8 +12,8 @@ inputs:
   to:
     description: "The number which is configured with twilio"
     required: true
-  twilio_api:
-    description: "Twilio API key from twilio console"
+  twilio_account_sid:
+    description: "Twilio Accout SID from twilio console"
     required: true
   twilio_auth:
     description: "Twilio Authentication token from console"
