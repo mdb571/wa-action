@@ -64,7 +64,7 @@ elif event=='page_build':
 
 elif event=='watch':
     repo_url = f'https://github.com/{repo}/'
-    response=f'*{name}* starred/forked your repo {repo} \n *Stars:{stars}* \n *Forks:{forks}*'
+    response=f'*{name}* starred/forked your repo *{repo}* \n *Stars:{stars}* \n *Forks:{forks}*'
 
 
 

@@ -24,6 +24,15 @@ inputs:
   iunum:
     description: 'Issue Number'
     default: ${{ github.event.issue.number }}
+  iu_actor: 
+    description: 'Issue Triggerer'
+    default: ${{ github.event.issue.user.login }}
+  iu_body:
+    description: 'Issue Body'
+    default: ${{ github.event.issue.body }}
+  iu_com:
+    description: 'Issue Comment'
+    default: ${{github.event.comment.body}}
   event_action:
     description: "Current state of the issue/pull request"
     default: ${{ github.event.action }}
@@ -33,6 +42,15 @@ inputs:
   prtitle:
     description: 'PR Title'
     default: ${{ github.event.pull_request.title }}
+  pr_body:
+    description: 'PR Content'
+    default: ${{ github.event.pull_request.body }}
+  stargazers:
+    description: 'Stars of the Repo'
+    default: ${{ github.event.repository.stargazers_count }}
+  forkers:
+    description: 'Number of Forks'
+    default: ${{ github.event.repository.forks_count }}
 
 runs:
   using: "docker"
