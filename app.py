@@ -34,8 +34,8 @@ elif event == 'issues':
     elif action == 'closed':
         response = f'The Issue *#{num}* on *{repo}* was closed by *{name}*, \n\n {repo_url}'
 
-     else:
-         response = f'A new {action} event was triggered on the issue *{title}* *#{num}* on *{repo}*  by *{name}*, \n\n {repo_url}'
+    else:
+        response = f'A new {action} event was triggered on the issue *{title}* *#{num}* on *{repo}*  by *{name}*, \n\n {repo_url}'
 elif event=='page_build':
     page_url='https://'+name+'.github.io/'+repo
     response = f'A new page build was triggered on the  on *{repo}*  by *{name}*, \n\n {page_url}'
