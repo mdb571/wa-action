@@ -49,7 +49,7 @@ else:
 
 From='whatsapp:'+From
 To='whatsapp:'+To
-client=Client(account_sid,authtoken)
+client=Client()
 message = client.messages \
     .create(
          from_=From,
