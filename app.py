@@ -26,16 +26,22 @@ if event == "pull_request":
     elif action == 'closed':
         response = f'The Pull request *{title}* *#{num}* on *{repo}* has been closed by *{name}*, \n\n {repo_url}'
 
+    else:
+        response = f'A new {action} event was triggered on the PR *{title}* *#{num}* on *{repo}*  by *{name}*, \n\n {repo_url}'
+
+
 elif event == 'issues':
     repo_url = f'https://github.com/{repo}/issues/{num}'
     if action == 'opened':
         response = f'A new Issue *{title}* *#{num}* has been opened in *{repo}* by *{name}* \n\n {repo_url}'
         
     elif action == 'closed':
-        response = f'The Issue *#{num}* on *{repo}* was closed by *{name}*, \n\n {repo_url}'
+        response = f'The Issue *{title}* *#{num}* on *{repo}* was closed by *{name}*, \n\n {repo_url}'
 
     else:
         response = f'A new {action} event was triggered on the issue *{title}* *#{num}* on *{repo}*  by *{name}*, \n\n {repo_url}'
+
+
 elif event=='page_build':
     page_url='https://'+name+'.github.io/'+repo
     response = f'A new page build was triggered on the  on *{repo}*  by *{name}*, \n\n {page_url}'
@@ -49,7 +55,7 @@ else:
 
 From='whatsapp:'+From
 To='whatsapp:'+To
-client=Client(account_sid,authtoken)
+client=Client()
 message = client.messages \
     .create(
          from_=From,
