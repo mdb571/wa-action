@@ -8,14 +8,13 @@ on:
     types: [opened, edited, pinned, closed, reopened, assigned, labeled]
   page_build:
 
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: wa-notify
-        run : echo 'Action running..!'
         uses: mdb571/wa-action@master
         with:
           from: ${{ secrets.FROM }}
