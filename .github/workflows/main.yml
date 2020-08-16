@@ -1,15 +1,19 @@
 name:  Whatsapp Notify
 on:
+  issue_comment:
+    types: [opened, edited, pinned, closed, reopened, assigned, labeled]
   pull_request:
-    types: [opened,closed]
+    types: [opened, closed, edited, ready_for_review, review_requested, reopened]
   issues:
-    types: [opened, closed]
+    types: [opened, closed,pinned,assigned,reopened]
+  page_build:
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Wa-Notify
+      - name: wa-notify
+        run : echo 'Action running..!'
         uses: mdb571/wa-action@master
         with:
           from: ${{ secrets.FROM }}
