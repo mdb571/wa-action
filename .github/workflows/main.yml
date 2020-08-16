@@ -1,12 +1,14 @@
 name:  Whatsapp Notify
 on:
   issue_comment:
-    types: [opened, edited, pinned, closed, reopened, assigned, labeled]
+    types: created
   pull_request:
     types: [opened, closed, edited, ready_for_review, review_requested, reopened]
   issues:
-    types: [opened, closed,pinned,assigned,reopened]
+    types: [opened, edited, pinned, closed, reopened, assigned, labeled]
   page_build:
+
+  
 jobs:
   build:
     runs-on: ubuntu-latest
