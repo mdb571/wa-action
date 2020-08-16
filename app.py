@@ -1,5 +1,5 @@
 import os
-import requests
+from twilio.rest import Client
 
 title = os.getenv("INPUT_IUTITLE")
 num = os.getenv("INPUT_IUNUM")
@@ -9,12 +9,8 @@ repo = os.getenv("GITHUB_REPOSITORY")
 action = os.getenv('INPUT_EVENT_ACTION')
 From = os.getenv('INPUT_FROM')
 To = os.getenv('INPUT_TO')
-apikey=os.getenv('INPUT_TWILIO_API')
+account_sid=os.getenv('INPUT_TWILIO_ACCOUNT_SID')
 authtoken=os.getenv('INPUT_TWILIO_AUTH')
-
-twilio_url='https://api.twilio.com/2010-04-01/Accounts/'+apikey+'/Messages.json'
-
-
 
 if title is None:
     title = os.getenv('INPUT_PRTITLE')
@@ -26,45 +22,29 @@ if event == "pull_request":
     github_url = f'https://github.com/{repo}/pulls/{num}'
     if action == "opened":
         response = f'A new Pull request *{title}* (*#{num}*) has been opened in *{repo}* by *{name}*  \n\n {github_url}'
-        data={
-         'To':To,
-         'From':From,
-         'Body':response
-        }
-        requests.post(twilio_url,data=data,auth=(apikey,authtoken))
+        
     elif action == 'closed':
         response = f'The Pull request *{title}* (#{num}) on *{repo}* has been closed by *{name}*, \n\n {github_url}'
-        data={
-         'To':To,
-         'From':From,
-         'Body':response
-        }
-        requests.post(twilio_url,data=data,auth=(apikey,authtoken))
-elif event == 'issues':
+        elif event == 'issues':
     github_url = f'https://github.com/{repo}/issues/{num}'
     if action == 'opened':
         response = f'A new Issue *{title}* (*#{num}*) has been opened in *{repo}* by *{name}* \n\n {github_url}'
-        data={
-         'To':To,
-         'From':From,
-         'Body':response
-        }
-        requests.post(twilio_url,data=data,auth=(apikey,authtoken))
+        
     elif action == 'closed':
         response = f'The Issue (*#{num}*) on *{repo}* was closed by *{name}*, \n\n {github_url}'
-        data={
-         'To':To,
-         'From':From,
-         'Body':response
-        }
-        requests.post(twilio_url,data=data,auth=(apikey,authtoken))
 
 else:
     github_url = f'https://github.com/{repo}'
     response = f'A new *{event}* has been made in *{repo}* by *{name}*, \n\n {github_url}'
-    data={
-         'To':To,
-         'From':From,
-         'Body':response
-        }
-    requests.post(twilio_url,data=data,auth=(apikey,authtoken))
+
+
+#creating twilio client
+
+client=Client(account_sid,authtoken)
+message = client.messages \
+    .create(
+         from_=From,
+         body=response,
+         to=To
+     )
+print('Message Sent')
