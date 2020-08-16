@@ -7,7 +7,8 @@ on:
   issues:
     types: [opened, edited, pinned, closed, reopened, assigned, labeled]
   page_build:
-
+  watch:
+    types: [started]
 
 jobs:
   build:
