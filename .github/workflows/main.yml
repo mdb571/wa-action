@@ -19,6 +19,6 @@ jobs:
         with:
           from: ${{ secrets.FROM }}
           to: ${{secrets.TO }}
-          twilio_account_sid: ${{ secrets.TWILIO_ACCOUNT_SID }}
-          twilio_auth: ${{ secrets.TWILIO_AUTH }}
-        
+        env:
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH }}
