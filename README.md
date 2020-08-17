@@ -10,7 +10,7 @@
 1. Create a free twilio account [here](https://www.twilio.com/).  
 2. From your twilio dashboard fetch ACCOUNT SID and AUTH TOKEN.
   <img alt="Twilio Dasboard" src="https://raw.githubusercontent.com/mdb571/covid-sms-notify/master/img/img2.png"/>
-3. Join your twilio whatsapp sandbox by send in your join code to the twilio whatsapp number 
+3. Join the twilio whatsapp sandbox by sending your join code to the twilio whatsapp number 
   <img alt="Twilio Sandbox" src="https://raw.githubusercontent.com/mdb571/wa-action/master/sandbox.jpeg"/>
   
 4. Create the following secrets in your repository by going to settings>secrets
