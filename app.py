@@ -29,10 +29,10 @@ if body is None:
 if event == "pull_request":
     repo_url = f'https://github.com/{repo}/pulls/{num}'
     if action == "opened":
-        response = f'🔓A new Pull request *{title}* *#{num}* has been opened in *{repo}* by *{name}*  \n\n {repo_url}'
+        response = f'A new Pull request *{title}* *#{num}* has been opened in *{repo}* by *{name}*  \n\n {repo_url}'
         
     elif action == 'closed':
-        response = f'🔒The Pull request *{title}* *#{num}* on *{repo}* has been closed by *{name}*, \n\n {repo_url}'
+        response = f'The Pull request *{title}* *#{num}* on *{repo}* has been closed by *{name}*, \n\n {repo_url}'
 
     else:
         response = f'A new {action} event was triggered on the PR *{title}* *#{num}* on *{repo}*  by *{name}*, \n\n {repo_url}'
@@ -41,13 +41,13 @@ if event == "pull_request":
 elif event == 'issues':
     repo_url = f'https://github.com/{repo}/issues/{num}'
     if action == 'opened':
-        response = f'🔓A new Issue *{title}* *#{num}* has been opened in *{repo}* by *{name}* \n\n {repo_url}'
+        response = f'A new Issue *{title}* *#{num}* has been opened in *{repo}* by *{name}* \n\n {repo_url}'
         
     elif action == 'closed':
-        response = f'🔒The Issue *{title}* *#{num}* on *{repo}* was closed by *{name}*, \n\n {repo_url}'
+        response = f'The Issue *{title}* *#{num}* on *{repo}* was closed by *{name}*, \n\n {repo_url}'
    
     elif action == 'reopened':
-        response = f'🔓The Issue *{title}* *#{num}* on *{repo}* was reopened by *{name}*, \n\n {repo_url}'
+        response = f'The Issue *{title}* *#{num}* on *{repo}* was reopened by *{name}*, \n\n {repo_url}'
 
 
     else:
@@ -56,7 +56,7 @@ elif event == 'issues':
 
 elif event=='issue_comment':
     repo_url = f'https://github.com/{repo}/issues/{num}'
-    response = f'*{name}* commented🗣️  _{comment}_ on issue *#{num}* of *{repo}  \n\n {repo_url}'
+    response = f'*{name}* commented  _{comment}_ on issue *#{num}* of *{repo}  \n\n {repo_url}'
 
 elif event=='page_build':
     page_url='https://'+name+'.github.io/'+repo
