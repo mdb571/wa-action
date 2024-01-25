@@ -17,8 +17,8 @@
 
  SECRET          | Purpose                                              | 
 ------------------|-------------------------------------------------------|
-FROM     | The twilio whatsapp bot number (default= ```+14155238886)```          | 
-TO    | Your Whatsapp number                                              | 
+FROM     | The twilio whatsapp bot number (default= ```+525549076662```          | 
+TO    | Your Whatsapp number                52555626313267                              | 
 TWILIO_ACCOUNT_SID        |twilio account sid obtained from your twilio dashboard|
 TWILIO_AUTH  |twilio auth token obtained from your twilio dashboard  |  
 
